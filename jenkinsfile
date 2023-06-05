@@ -1,0 +1,14 @@
+pipeline {
+    agent {
+        node [
+            label 't059-runner'
+        ]
+    }
+    stages {
+        stage('checkout') {
+            steps {
+                
+            }
+        }
+    }
+}

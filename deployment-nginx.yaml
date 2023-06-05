@@ -1,0 +1,30 @@
+
+- hosts: nginx
+  become: yes
+  tasks:
+    - name: "apt-get update"
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: "install nginx"
+      apt:
+        name: ["nginx"]
+        state: latest
+
+    - name: Copy index.html to Nginx document root
+      copy:
+        src: /home/srinivas/ans/a3/index.html  # Replace with the path to your local index.html file
+        dest: /usr/share/html
+      notify: restart nginx
+
+    - name: Set correct permissions for index.html
+      file:
+        path: /var/www/html/index.html
+        mode: '0644'
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
