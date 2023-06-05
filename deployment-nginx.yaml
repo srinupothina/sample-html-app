@@ -14,7 +14,7 @@
 
     - name: Copy index.html to Nginx document root
       copy:
-        src: /home/srinivas/ans/a3/index.html  # Replace with the path to your local index.html file
+        src: /opt/jenkins/workspace/VisOps/t059/sample-html-app/index.html # Replace with the path to your local index.html file
         dest: /usr/share/html
       notify: restart nginx
 
