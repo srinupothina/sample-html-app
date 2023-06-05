@@ -7,7 +7,12 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                
+                git credentialsId: 'ca-git-access', branch: 'sample-html-app', url: 'https://git.cloudavise.com/visops/t059/sample-html-app.git'
+            }
+        }
+        stage('Deploy nginx') {
+            steps {
+                sh 'ansible-playbook -i inventory deploy-nginx.yaml'
             }
         }
     }
