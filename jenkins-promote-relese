@@ -13,10 +13,10 @@ pipeline {
                     def remoteUser = 'ubuntu'
                     def remoteDockerImage = 'nginx'
                     def imageName = "bharathcehub/promote-release:${env.BUILD_NUMBER}"
-                    def latestImageName = "bharathcehub/promote-release:latest"
+                    def latestImageName = "sree-hub/promote-release:latest"
 
                     withCredentials([
-                        usernamePassword(credentialsId: 'to54-dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')
+                        usernamePassword(credentialsId: 't059-dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')
                     ]) {
                         sshagent(credentials: ['ssh-key']) {
                             sh """
