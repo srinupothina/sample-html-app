@@ -1,0 +1,22 @@
+pipeline {
+    agent {
+        node {
+            label 't059-runner'
+        }
+    }
+
+    stages {
+        stage('checkout') {
+            steps {
+                git credentialsId: 'ca-git-access', branch: 'sample-html-app', url: 'https://git.cloudavise.com/visops/t059/deploy-on-docker.git'
+            }
+        }
+        
+        stage('Deploy Nginx') {
+            steps {
+                sh 'ansible-playbook -i inventory nginx-docker-container.yaml'
+            }
+        }
+    }
+}
+
