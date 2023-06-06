@@ -12,7 +12,7 @@ pipeline {
                     def remoteServer = '54.224.22.204'
                     def remoteUser = 'ubuntu'
                     def remoteDockerImage = 'nginx'
-                    def imageName = "bharathcehub/promote-release:${env.BUILD_NUMBER}"
+                    def imageName = "srinu9666/promote-release:${env.BUILD_NUMBER}"
                     def latestImageName = "srinu9666/promote-release:latest"
 
                     withCredentials([
