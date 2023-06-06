@@ -14,6 +14,8 @@ pipeline {
         
         stage('Deploy Nginx') {
             steps {
+                sh 'ansible-vault decrypt --vault-id /opt/vault_id ec2-1.pem'
+                sh "chmod 400 ec2-1.pem"
                 sh 'ansible-playbook -i inventory nginx-docker-container.yaml'
             }
         }
